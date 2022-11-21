@@ -145,6 +145,7 @@ def get_image(mw, cfg, img)
     ii = mw.prop(:imageinfo, opts)
     url = ii.data["pages"][ii.data["pages"].keys[0]]["imageinfo"][0][key] # if actual width <= cfg[:width], the original image would be in thumburl
     cmdline = "wget -O \"#{outfile}\" #{url}"
+    puts "Issuing command:" + cmdline
     system(cmdline)
     return nil unless $?.success?
     img['filepath'] = outfile
